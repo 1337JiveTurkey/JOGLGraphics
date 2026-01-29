@@ -6,6 +6,7 @@ import static com.jogamp.opengl.GL4.*;
 import com.jogamp.common.nio.Buffers;
 import com.jogamp.opengl.*;
 import com.jogamp.opengl.awt.GLCanvas;
+import com.jogamp.opengl.util.glsl.ShaderUtil;
 import ninja.cardcarrying.opengl.Program;
 import ninja.cardcarrying.opengl.Shader;
 import org.joml.Matrix4f;
@@ -19,16 +20,16 @@ public class Graphics extends JFrame implements GLEventListener {
 
 	public static final float[] vertexPositions = {
 			-1f,  1f, -1f, -1f, -1f, -1f,  1f, -1f, -1f,
-			1f, -1f, -1f,  1f,  1f, -1f, -1f,  1f, -1f,
-			1f, -1f, -1f,  1f, -1f,  1f,  1f,  1f, -1f,
-			1f, -1f,  1f,  1f,  1f,  1f,  1f,  1f, -1f, // End of page 73
-			1f, -1f,  1f, -1f, -1f,  1f,  1f,  1f,  1f, // Begin of page 74
+			 1f, -1f, -1f,  1f,  1f, -1f, -1f,  1f, -1f,
+			 1f, -1f, -1f,  1f, -1f,  1f,  1f,  1f, -1f,
+			 1f, -1f,  1f,  1f,  1f,  1f,  1f,  1f, -1f, // End of page 73
+			 1f, -1f,  1f, -1f, -1f,  1f,  1f,  1f,  1f, // Begin of page 74
 			-1f, -1f,  1f, -1f,  1f,  1f,  1f,  1f,  1f,
 			-1f, -1f,  1f, -1f, -1f, -1f, -1f,  1f,  1f,
 			-1f, -1f,  1f,  1f, -1f,  1f,  1f, -1f, -1f,
-			1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f,  1f,
+			 1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f,  1f,
 			-1f,  1f, -1f,  1f,  1f, -1f,  1f,  1f,  1f,
-			1f,  1f,  1f, -1f,  1f,  1f, -1f,  1f, -1f
+			 1f,  1f,  1f, -1f,  1f,  1f, -1f,  1f, -1f
 	};
 
 	/**
@@ -59,7 +60,9 @@ public class Graphics extends JFrame implements GLEventListener {
 		setSize(1600, 1200);
 		setLocation(1000, 800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		canvas = new GLCanvas();
+		GLProfile profile = GLProfile.get(GLProfile.GL4);
+		GLCapabilities capabilities = new GLCapabilities(profile);
+		canvas = new GLCanvas(capabilities);
 		canvas.addGLEventListener(this);
 	}
 
