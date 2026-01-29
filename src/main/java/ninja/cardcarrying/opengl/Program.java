@@ -11,7 +11,7 @@ import java.util.logging.Logger;
  * Object representing all of the shaders and
  */
 public class Program implements AutoCloseable {
-	private static final Logger log = Logger.getLogger(Shader.class.getName());
+	private static final Logger log = Logger.getLogger(Program.class.getName());
 
 	private final int programName;
 	private final EnumMap<Shader.Type, Shader> shaders = new EnumMap<>(Shader.Type.class);

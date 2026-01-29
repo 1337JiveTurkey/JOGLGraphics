@@ -23,7 +23,7 @@ dependencies {
     // https://mvnrepository.com/artifact/org.jogamp.gluegen/gluegen-rt-main
     implementation("org.jogamp.gluegen:gluegen-rt-main:2.6.0")
     // https://mvnrepository.com/artifact/org.joml/joml
-    implementation("org.joml:joml:1.10.2+")
+    implementation("org.joml:joml:1.10.8+")
 }
 
 tasks.getByName<Test>("test") {
